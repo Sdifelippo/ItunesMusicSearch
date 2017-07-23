@@ -1,0 +1,65 @@
+body {
+  background-color: beige;
+color: blue;
+  background-image: url("music-notes-background-2591.jpg");
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.music-player {
+  width: 65rem;
+  margin-left: 15rem;
+}
+
+section.searchfield{
+  margin-top: 47px;
+}
+
+hr{
+  background-color: gray;
+  height: 1px;
+  border: 0;
+  margin-top: 60px;
+}
+h2{
+  color:white;
+}
+h3{
+  color: white;
+}
+
+#musicsearch{
+  width: 60rem;
+  margin-left: 14rem;
+}
+
+.button{
+
+width: 115px;
+border-radius: 5px;
+}
+
+.music{
+  display: flex;
+    flex-wrap: wrap;
+
+      width: auto;
+      margin-bottom: 10px;
+}
+
+.wrapper {
+      background-color: firebrick;
+  color: white;
+border-color: white;
+  border: solid;
+  width: 270px;
+  margin-bottom: 10px;
+}
+
+img{
+    width: 9rem;
+    height: 8rem;
+}
