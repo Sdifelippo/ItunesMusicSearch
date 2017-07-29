@@ -1,54 +1,67 @@
-/*
-  Here is a rough idea for the steps you could take:
-*/
-
-// 1. First select and store the elements you'll be working with
-// 2. Create your `submit` event for getting the user's search term
-// 3. Create your `fetch` request that is called after a submission
-// 4. Create a way to append the fetch results to your page
-// 5. Create a way to listen for a click that will play the song in the audio play
-
-let searchbar = document.querySelector("#musicsearch");
-let button = document.querySelector(".button");
-let music = document.querySelector(".music");
-
-button.addEventListener("click", function searchbar() {
-  music.innerHTML = "";
-  fetch("https://itunes.apple.com/search?term=" + musicsearch.value)
-    .then(function(response) {
-      if (response.status !== 200) {
-        console.log(response.status);
-        return;
-      }
-      response.json().then(function(obj) {
-
-        obj.results.forEach(function(results) {
-
-          let imagesource = results.artworkUrl100
-          let title = results.trackName
-          let artist = results.artistName
-          let musicdemo = results.previewUrl
-
-          results = `
-            <div class="wrapper">
-          <h3>${title} </h3>
-           <h2>${artist}</h2>
-
-
-                         <br>
-                         <a href="${results.artistName}">
-                         <a href="${results.previewUrl}">
-                         <img src="${imagesource}" onError="this.src=''"></a>
-                         </div>`;
+let siteControls = document.querySelector(".container")
+let searchButton = document.querySelector(".search_button");
+let input = document.querySelector(".search_song");
+let searchResults = document.querySelector(".results");
+let musicPlayer = document.querySelector(".music_player")
+let albumButton = document.querySelectorAll(".albumBtn")
+var audioSource = document.querySelector(".audioSource");
 
 
 
-          music.innerHTML += results;
+siteControls.addEventListener("click", function(e) {
+  let inputValue = input.value;
+  console.log("e is: ", e)
 
-        });
-      })
-    })
-    .catch(function(error) {
-      console.log('Fetch Error :-S', err);
-    });
+
+  if (e.target === searchButton) {
+searchResults.innerHTML = "";    fetch(`https://itunes.apple.com/search?term=${inputValue}`).then(
+
+        function(response) {
+
+          if (response.status !== 200) {
+            console.log(response.status);
+            return;
+          }
+
+          response.json().then(function(obj) {
+
+            let results = obj.results;
+
+
+
+            console.log(results.forEach(function(track) {
+              console.log("one of the results is: ", track);
+
+              let albumCover = track.artworkUrl100
+              var sample = track.previewUrl
+              let artist = track.artistName
+              let songTitle = track.trackName
+              console.log(artist)
+
+let renderTracks = `
+
+<div class="wrapper">
+                          <div class="sampleSrc" src="${sample}"></div>
+                           <a href="#" src="${sample}"><img class="image" value="${sample}" src="${albumCover}" alt="album_cover"> </button></a>
+                          <div id="title">${songTitle}</div>
+                          <h3>${artist}</h3>
+                          </div>`
+
+searchResults.innerHTML += renderTracks;
+
+
+            }));
+          });
+        })
+      .catch(function(err) {
+        console.log("fetch error :-S", err);
+      });
+  }
+//
+  if(e.target && e.target.matches("img.image")){
+      console.log("Button press", e.target);
+      audioSource.src = e.target.getAttribute('value');
+      musicPlayer.load();
+      musicPlayer.play();
+  }
 })
