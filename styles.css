@@ -35,6 +35,7 @@ h1 {
 }
 
 section.results {
+  margin-left: 9rem;
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -56,6 +57,11 @@ h3 {
     justify-content: center;
   }
 
+.searchtitle {
+  color: white;
+font-size: 20px;
+    margin-left: 130px;
+}
 .search_button {
   width: 90px;
 }
