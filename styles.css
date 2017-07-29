@@ -18,7 +18,7 @@ h1 {
 }
 
 .player {
-  margin-left: 56rem;
+  margin-left: 40rem;
   color: white;
 }
 
@@ -29,7 +29,7 @@ h1 {
 
 .search-form {
   margin-top: 40px;
-  margin-left: 35rem;
+  margin-left: 25rem;
   margin-bottom: -19px;
   font-size: large;
 }
@@ -60,7 +60,7 @@ h3 {
 .searchtitle {
   color: white;
 font-size: 20px;
-    margin-left: 130px;
+    margin-left: 46px;
 }
 .search_button {
   width: 90px;
